@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.jumbotron{
+    background-color: rgba(45, 45, 45, 0.5);
+}
+#timer{
+    color:white;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+body{
+    font-family: 'Permanent Marker', cursive;
+    /* background-image: linear-gradient(to right, green,blue,indigo); */
+    background-image: url("../images/background.jpg");
+    font-size: 40px;
+    color: white;
+    /* background-color:rgb(87, 0, 128); */
+
+}
+.container{
+display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+a{
+    color:white; 
+}
+h5{
+    color:white;
+}
+#spotify{
+    margin-top: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      float: left;
+      padding: 0 10px;
+    }
+.song{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.card-header{
+    background-color:black;
+}
+.card{
+    background-color: rgba(45, 45, 45, 0.5);
+    text-align: center;
+    float: center;
+    display: flex;
+    margin-top: 20px;
+}
+#vote-button{
+    /* display: ; */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 800px){
+#spotify {
+        flex-direction: column;
+      }
+      .song {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+}
