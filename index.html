@@ -2,67 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Battles</title>
-
+    <title>Your awesome Youtube search engine</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Awesome videos!" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
-
 </head>
 
 <body>
-    <!-- <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
-    <div class="container">
+    <header>
+        <h1 class="w100 text-center"><a href="index.html">YouTube Viral Search</a></h1>
+    </header>
+    <div class="row">
 
-        <div class="row">
-            <div class="col-lg-6 text-center">
-                <iframe id="song1" src="https://open.spotify.com/embed/artist/68Y7rtw5jDdGwGtEW7AAO0" width="300"
-                    height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                <br>
-                <button id="votedsong1" type="submit">Vote</button>
-                <br>
-                Song 1 Votes: <span id="song1votes">0</span>
-            </div>
-            <div class="col-lg-6 text-center">
-                <iframe id="song2" src="https://open.spotify.com/embed/artist/68Y7rtw5jDdGwGtEW7AAO0" width="300"
-                    height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                <br>
-                <button id="votedsong2" type="submit">Vote</button>
-                <br>
-                Song 2 Votes: <span id="song2votes">0</span>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-12" style="text-align: center;">
-                <span id="timer">10</span> seconds left to vote!!
-            </div>
-        </div>
+        <button onclick="loadClient()">authorize and load</button>
+        <button onclick="execute()">execute</button>
 
-        <div class="row">
-            <div class="col-lg-12" style="text-align: center;">
-                <h1>Winners!</h1>
-                <span id="winners"></span>
-            </div>
-        </div>
     </div>
 
-    <script src="assets/javascript/app.js"></script>
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
+    <script src="assets/javascript/youtube.js"></script>
+
 </body>
 
 </html>
