@@ -6,33 +6,82 @@
    * https://developers.google.com/explorer-help/guides/code_samples#javascript
    */
 
-//   function authenticate() {
-//     return gapi.auth2.getAuthInstance()
-//         .signIn({scope: "https://www.googleapis.com/auth/youtube.readonly"})
-//         .then(function() { console.log("Sign-in successful"); },
-//               function(err) { console.error("Error signing in", err); });
-//   }
-  function loadClient() {
-    gapi.client.setApiKey("AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw");
-    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
-  }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
+  // function authenticate() {
+  //   return gapi.auth2.getAuthInstance()
+  //     .signIn({
+  //       scope: "https://www.googleapis.com/auth/youtube.readonly"
+  //     })
+  //     .then(function () {
+  //         console.log("Sign-in successful");
+  //       },
+  //       function (err) {
+  //         console.error("Error signing in", err);
+  //       });
+  // }
+
+
+  function start() { 
+     console.log(gapi);
+  // 2. Initialize the JavaScript client library.
+  gapi.client.init({
+    'apiKey': 'AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw',
+    // // Your API key will be automatically added to the Discovery Document URLs.
+    // 'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
+    // // clientId and scope are optional if auth is not required.
+    // 'clientId': '152697641744-1gl9i13gc09iok0cunmtmkl34ahfiee5.apps.googleusercontent.com.apps.googleusercontent.com',
+    // 'scope': 'profile',
+  // }).then(function() {
+  //   // 3. Initialize and make the API request.
+  //   return gapi.client.people.people.get({
+  //     'resourceName': 'people/me',
+  //     'requestMask.includeField': 'person.names'
+  //   });
+  // // }).then(function(response) {
+  // //   console.log(response.result);
+  // // }, function(reason) {
+  // //   console.log('Error: ' + reason.result.error.message);
+  // // });
+});
+// 1. Load the JavaScript client library.
+gapi.load('client', start);
+
+
+
+
+  //  function loadClient() {
+  // //   gapi.client.init({
+  // //     'apiKey': 'AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw',
+  // //   });
+
+
+
+  
+  //   gapi.client.setApiKey("AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw");
+  //   return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+  //     .then(function () {
+  //         console.log("GAPI client loaded for API");
+  //       },
+  //       function (err) {
+  //         console.error("Error loading GAPI client for API", err);
+  //       });
+  // }
+  //   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
     return gapi.client.youtube.videos.list({
-      "chart": "mostPopular",
-      "maxResults": 1
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
+        "chart": "mostPopular",
+        "maxResults": 1
+      })
+      .then(function (response) {
+          // Handle the results here (response.result has the parsed body).
+          console.log("Response", response);
+        },
+        function (err) {
+          console.error("Execute error", err);
+        });
   }
-//   gapi.load("client:auth2", function() {
-//     gapi.auth2.init({client_id: "YOUR_CLIENT_ID"});
-//   });
+    // gapi.load("client:auth2", function() {
+    //   gapi.auth2.init({client_id: "152697641744-1gl9i13gc09iok0cunmtmkl34ahfiee5.apps.googleusercontent.com"});
+    // });
 </script>
 <button onclick="loadClient()">authorize and load</button>
 <button onclick="execute()">execute</button>
