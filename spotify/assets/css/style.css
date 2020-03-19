@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
 }
@@ -11,16 +12,14 @@
     text-align: center;
 }
 h1{
+    color: rgb(12, 235, 12);
     text-align: center;
 }
 body{
     font-family: 'Permanent Marker', cursive;
-    /* background-image: linear-gradient(to right, green,blue,indigo); */
     background-image: url("../images/background.jpg");
     font-size: 40px;
     color: white;
-    /* background-color:rgb(87, 0, 128); */
-
 }
 .container{
 display: flex;
@@ -74,3 +73,26 @@ h5{
         margin-bottom: 10px;
       }
 }
+footer {
+    top: 0;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    /* position:fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align:center;
+    color:#ffffff;
+    padding:0px 0px -38px 0px;
+    box-sizing:border-box;
+    margin-top: 30px;
+    background-color: black;
+    font-size: 15px;
+    text-align: center;
+    padding: 20px;
+    }
+
+ 
