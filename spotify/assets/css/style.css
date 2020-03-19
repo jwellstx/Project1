@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+#vote-button{
+    
+}
 
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
