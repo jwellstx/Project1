@@ -90,6 +90,11 @@ $("#s1Submit").on("click", function () {
         });
     });
 });
+$(document).on("keyup", "#s1Name", function (event) {
+    if (event.key !== "Enter") return;
+    $('#s1Submit').click();
+    event.preventDefault();
+});
 
 $("#s2Submit").on("click", function () {
     var access_token = "";   // access token to call spotify api 
@@ -121,6 +126,11 @@ $("#s2Submit").on("click", function () {
             }
         });
     });
+});
+$(document).on("keyup", "#s2Name", function (event) {
+    if (event.key !== "Enter") return;
+    $('#s2Submit').click();
+    event.preventDefault();
 });
 
 // button to vote for song 1 - if pressed, update number of song1 votes then update DB
@@ -226,5 +236,5 @@ db.ref("winners").on("child_added", snapshot => {
     newDiv.append($("<iframe>").attr("src", snapshot.val().song).css("height", "80"));
     newDiv.css({"float": "left", "margin": "2%"});
 
-    $("#winners").append(newDiv);
+    $("#winners").prepend(newDiv);
 });
