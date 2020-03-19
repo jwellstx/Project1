@@ -3,9 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-#vote-button{
-    
-}
 
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
@@ -35,7 +32,7 @@ a{
 h5{
     color:white;
 }
-#spotify{
+/* #spotify{
     margin-top: 50px;
       display: flex;
       flex-direction: row;
@@ -48,7 +45,7 @@ h5{
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
+} */
 .card-header{
     background-color:black;
 }
@@ -59,13 +56,12 @@ h5{
     display: flex;
     margin-top: 20px;
 }
-#vote-button{
-    /* display: ; */
+/* #vote-button{
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-@media (max-width: 800px){
+} */
+/* @media (max-width: 800px){
 #spotify {
         flex-direction: column;
       }
@@ -75,7 +71,7 @@ h5{
         margin: 0 auto;
         margin-bottom: 10px;
       }
-}
+} */
 footer {
     top: 0;
     padding: 0px;
