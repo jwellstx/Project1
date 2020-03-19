@@ -220,10 +220,11 @@ db.ref("spotify").on("value", snapshot => {
 });
 
 db.ref("winners").on("child_added", snapshot => {
-    $("#winners").prepend($("<iframe>").attr("src", snapshot.val().song).css({
-        "height": "80",
-    }));
-    $("#winners").prepend($("<br>"));
-    $("#winners").prepend($("<img>").attr("src", snapshot.val().img));
-    $("#winners").prepend($("<br><br>"));
+    var newDiv = $("<div>");
+    newDiv.append($("<img>").attr("src", snapshot.val().img));
+    newDiv.append($("<br>"));
+    newDiv.append($("<iframe>").attr("src", snapshot.val().song).css("height", "80"));
+    newDiv.css({"float": "left", "margin": "2%"});
+
+    $("#winners").append(newDiv);
 });
