@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
   <title>Spotify Battle</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> 
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Spotify <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="youtube.html">YouTube</a>
-          </div>
-        </div>
-      </nav>
-      <div class="jumbotron">
-        <h1 class="display-4">Spotify Battle</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Spotify <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="youtube.html">YouTube</a>
       </div>
-      <!-- https://mdbootstrap.com/snippets/jquery/ascensus/419481 -->
-      
-      <!-- <div class="container">
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-header">
-             Next Genre
-            </div>
-            <div class="card-body" id="winners">
-              <h2 id="winner-song"></h2>
-            </div>
-          </div>
-          </div>
-    </div> -->
-      <!-- FView -->
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1 class="display-4">Spotify Battle</h1>
+  </div>
+  <!-- https://mdbootstrap.com/snippets/jquery/ascensus/419481 -->
+  <!-- FView -->
   <div class="view">
-      <!-- Container -->
-      <div class="container">
-        
-        <!-- <div class="list-group">
+    <!-- Container -->
+    <div class="container">
+
+      <!-- <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action active">
             Cras justo odio
           </a>
@@ -55,16 +53,15 @@
           <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
           <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
         </div> -->
-        <div class=col-md-6>
+      <div class=col-md-6>
         <div id="spotify" class="song">
           <!-- Card -->
           <div class="card">
 
             <!-- Card image -->
             <div class="view">
-                <!-- Spotifyimage -->
-              <img class="card-img-top" src="assets/images/youarewhatyoulistento.jpg"
-                alt="Card image cap">
+              <!-- Spotifyimage -->
+              <img class="card-img-top" src="assets/images/youarewhatyoulistento.jpg" alt="Card image cap">
               <a href="#" target="_blank">
                 <div class="mask gradient-card"></div>
               </a>
@@ -78,14 +75,14 @@
               <h5 class="h5 font-weight-bold">Song Name</h5>
 
               <audio id="music" preload="true">
-                  <!-- song link -->
-                  <source src="">
+                <!-- song link -->
+                <source id="song1" src="">
               </audio>
               <div id="audioplayer">
-                  <i id="pButton" class="fas fa-play"></i>
-                  <div id="timeline">
-                      <div id="playhead"></div>
-                  </div>
+                <i id="pButton" class="fas fa-play"></i>
+                <div id="timeline">
+                  <div id="playhead"></div>
+                </div>
               </div>
 
             </div>
@@ -93,24 +90,23 @@
           </div>
           <!-- Card -->
 
-          </div>
-
-          <div id="vote-button"><button type="button" class="btn btn-success">Vote</button></div>
-<!-- vote button -->
         </div>
+
+        <div id="vote-button"><button id="song1votes" type="button" class="btn btn-success">Vote</button></div>
+        <!-- vote button -->
+      </div>
       <!-- </div> -->
 
-      
-        <div class=col-md-6>
-          <div id="spotify" class="song">
+
+      <div class=col-md-6>
+        <div id="spotify" class="song">
           <!-- Card -->
           <div class="card">
 
             <!-- Card image -->
             <div class="view">
-                <!-- Spotifyimage -->
-              <img class="card-img-top" src="assets/images/youarewhatyoulistento.jpg"
-                alt="Card image cap">
+              <!-- Spotifyimage -->
+              <img class="card-img-top" src="assets/images/youarewhatyoulistento.jpg" alt="Card image cap">
               <a href="#" target="_blank">
                 <div class="mask gradient-card"></div>
               </a>
@@ -118,20 +114,20 @@
 
             <!-- Card content -->
             <div class="card-body text-center">
-                <!-- update with artist name -->
+              <!-- update with artist name -->
               <h5 class="h5 font-weight-bold"><a href="#" target="_blank">Name of Artist</a></h5>
               <!-- update with song name  -->
               <h5 class="h5 font-weight-bold">Song Name</h5>
 
               <audio id="music" preload="true">
-                  <!-- song link -->
-                  <source src="#">
+                <!-- song link -->
+                <source id="song2" src="#">
               </audio>
               <div id="audioplayer">
-                  <i id="pButton" class="fas fa-play"></i>
-                  <div id="timeline">
-                      <div id="playhead"></div>
-                  </div>
+                <i id="pButton" class="fas fa-play"></i>
+                <div id="timeline">
+                  <div id="playhead"></div>
+                </div>
               </div>
 
             </div>
@@ -140,36 +136,42 @@
           <!-- Card -->
 
         </div>
-        <div id="vote-button"><button type="button" class="btn btn-success">Vote</button></div>
-<!-- vote button -->
-        </div>
-        <!-- div -->
-   
+        <div id="vote-button"><button id="song2votes" type="button" class="btn btn-success">Vote</button></div>
+        <!-- vote button -->
       </div>
-      <!-- container -->
-      <div class="container">
+      <!-- div -->
+
+    </div>
+    <!-- container -->
+    <div class="container">
       <div class="col-lg-6">
         <div class="card">
           <div class="card-header">
             Winners
           </div>
           <div class="card-body" id="winners">
-            <h2 id="winner-song"></h2>
+            <h2 id="winners"></h2>
           </div>
         </div>
-        </div>
+      </div>
+    </div>
   </div>
-  <!-- view -->
-  <!-- <footer>
-    <span>Copyright 2020, Spotify and Youtube Battles</span>
-    </footer> -->
-  </div>
+  <script type="text/javascript" src="assets/javascript/app.js" charset="UTF-8"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 <footer>
   <span>Copyright 2020, Spotify and Youtube Battles</span>
-  </footer>
+</footer>
+
 </html>
