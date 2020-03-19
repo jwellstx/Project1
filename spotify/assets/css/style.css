@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
 }
@@ -11,16 +12,14 @@
     text-align: center;
 }
 h1{
+    color: rgb(12, 235, 12);
     text-align: center;
 }
 body{
     font-family: 'Permanent Marker', cursive;
-    /* background-image: linear-gradient(to right, green,blue,indigo); */
     background-image: url("../images/background.jpg");
     font-size: 40px;
     color: white;
-    /* background-color:rgb(87, 0, 128); */
-
 }
 .container{
 display: flex;
@@ -93,7 +92,7 @@ footer {
     background-color: black;
     font-size: 15px;
     text-align: center;
-    padding-top: 10px;
+    padding: 20px;
     }
 
  
