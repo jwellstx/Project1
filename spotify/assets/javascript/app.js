@@ -195,7 +195,7 @@ var spotify = {
         });
         
         // Use song and album urls from the db to update the winners selector win someone wins. Limit 10
-        db.ref("winners").endAt().limitToLast(9).on("child_added", snapshot => {
+        db.ref("winners").endAt().limitToLast(12).on("child_added", snapshot => {
             $("#winner").empty();
             var newDiv = $("<div>");
             newDiv.append($("<img>").attr("src", snapshot.val().img));
