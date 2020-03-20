@@ -27,12 +27,24 @@ display: flex;
   justify-content: center;
   flex-direction: row;
 }
+.row{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 a{
     color:white; 
     font-size: 20px;
 }
 h5{
     color:white;
+}
+input #s1Name #s2Name{
+    display:flex;
+    /* text-align: center; */
+    justify-content: center;
+}
+.card-body .text-center{
+    display: flex;
 }
 /* #spotify{
     margin-top: 50px;
@@ -94,7 +106,7 @@ footer {
     padding:0px 0px -38px 0px;
     box-sizing:border-box;
     margin-top: 30px;
-    background-color: black;
+    /* background-color: black; */
     font-size: 15px;
     text-align: center;
     padding: 20px;
