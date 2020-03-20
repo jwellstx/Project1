@@ -15,57 +15,72 @@ h1{
     color: white;
     text-align: center;
 }
+html{
+    min-height: 100%;
+    box-sizing: border-box;
+}
+html,body{
+    margin:0;
+    padding:0;
+  }
 body{
     font-family: 'Permanent Marker', cursive;
-    /* background-image: url("../Project1/images/youtify.jpg"); */
-    background-image: linear-gradient(to right, green,red);
-    font-size: 40px;
+    background-image: url("../Project1/images/background.jpg");
+    /* background-image: linear-gradient(to right, green,red); */
+    font-size: 20px;
     color: white;
+    height: 100%;
 }
 .container{
-    display: flex;
+  display: flex;
   justify-content: center;
   flex-direction: row;
 }
 a{
     color:white; 
+    text-decoration: none;
 }
-h5{
-    color:white;
+a:hover { 
+    text-decoration: none; 
+    color: white;
+    /* background: black; */
+}
+h1{
+    font-size: 100px;
+}
+.row{
+    margin-bottom: 100px;
+}
+h1 .battle-text{
+    margin-bottom: 100px;
+}
+button a{
+    font-size: 50px;
+    text-decoration: none;
+    /* background: black; */
+}
+#battle-button{
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 100px;
 }
 
-#battlebtn{
-    text-align: center;
-}
-/* .card-header{
-    background-color:black;
-}
-.card{
-    background-color: rgba(45, 45, 45, 0.5);
-    text-align: center;
-    float: center;
-    display: flex;
-    margin-top: 20px;
-} */
 footer {
     top: 0;
     padding: 0px;
     width: 100%;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     left: 0;
     bottom: 0;
-    width: 100%;
     text-align:center;
     color:#ffffff;
-    padding:0px 0px -38px 0px;
+    /* padding:0px 0px -38px 0px; */
     box-sizing:border-box;
-    margin-top: 30px;
-    background-color: black;
+    /* margin-top: 100px; */
     font-size: 15px;
     text-align: center;
-    padding: 20px;
-    /* flex-shrink: 0; */
+    
     }
 
    
