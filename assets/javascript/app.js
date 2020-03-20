@@ -10,28 +10,22 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
-
 // sample authorization for client verification -> ignore this
 // https://accounts.spotify.com/en/authorize?client_id=aa373cd188254322a46c8e258cd404a9&redirect_uri=https:%2F%2Fjwellstx.github.io%2FProject1%2Fcallback&response_type=token&state=123
-
 var db = firebase.database();
 var song1votes = 0;
 var song2votes = 0;
-
 // just lets the DB know that someone has connected and to get a new access_token from firebase cloud functions
 db.ref("newuser").update({
     state: true
 });
-
 // this just checks if anyone has already voted, if not set initial values to 0
 // also, check if 2 songs already exist, if so, use those.  If none defined, generate new ones
 db.ref("spotify").once("value", snapshot => {
     var dbRef = snapshot.val();
-
     // checks for song1votes existence
     song1votes = snapshot.child("song1votes").exists() ? dbRef.song1votes : 0;
     song2votes = snapshot.child("song1votes").exists() ? dbRef.song2votes : 0;
-
     // check to make sure boths songs are selected, if not generate new songs
     if (snapshot.child("song1").exists()) {
         $("#s1").attr("src", dbRef.song1);
@@ -55,13 +49,11 @@ db.ref("spotify").once("value", snapshot => {
         $("#s1Votes, #s2Votes").show();
     }
 });
-
 $("#s1Submit").on("click", function () {
     var access_token = "";   // access token to call spotify api 
     var songurl = "https://open.spotify.com/embed/track/";      // url to get song track
     var song1Name = $("#s1Name").val().trim();
     $("s1Search").hide();
-
     db.ref().once("value", snapshot => {
         // when new songs are needed, get the id and pass from DB and encode it for api call
         var dbRef = snapshot.val();
@@ -86,7 +78,6 @@ $("#s1Submit").on("click", function () {
                 $("#s1Search").hide();
                 $("#s1").show();
             }
-
         });
     });
 });
@@ -95,12 +86,10 @@ $(document).on("keyup", "#s1Name", function (event) {
     $('#s1Submit').click();
     event.preventDefault();
 });
-
 $("#s2Submit").on("click", function () {
     var access_token = "";   // access token to call spotify api 
     var songurl = "https://open.spotify.com/embed/track/";      // url to get song track
     var song2Name = $("#s2Name").val().trim();
-
     db.ref().once("value", snapshot => {
         // when new songs are needed, get the id and pass from DB and encode it for api call
         var dbRef = snapshot.val();
@@ -132,12 +121,10 @@ $(document).on("keyup", "#s2Name", function (event) {
     $('#s2Submit').click();
     event.preventDefault();
 });
-
 // button to vote for song 1 - if pressed, update number of song1 votes then update DB
 // to reflect across users
 $("#s1VoteSubmit").on('click', function () {
     var voted = localStorage.getItem("hasvoted");
-
     if (voted) return;
     else {
         song1votes++;
@@ -147,14 +134,11 @@ $("#s1VoteSubmit").on('click', function () {
     db.ref("spotify").update({
         song1votes: song1votes,
     });
-
 });
-
 // button to vote for song 2 - if pressed, update number of song2 votes then update DB
 // to reflect across users
 $("#s2VoteSubmit").on('click', function () {
     var voted = localStorage.getItem("hasvoted");
-
     if (voted) return;
     else {
         song2votes++;
@@ -165,7 +149,6 @@ $("#s2VoteSubmit").on('click', function () {
         song2votes: song2votes,
     });
 });
-
 // Update num of votes for each song on webpage when someone clicks the vote button.
 // also if song votes for either one hit 15, announce winner then call newSongs to get new songs
 // then reset vote count to 0
@@ -173,7 +156,6 @@ db.ref("spotify").on("value", snapshot => {
     if (snapshot.child("song1").exists() && snapshot.child("song2").exists()) {
         $("#s1Votes, #s2Votes").show();
     }
-
     if (snapshot.child("song1votes").exists()) {
         $("#s1NumOfVotes").html(snapshot.val().song1votes);
         song1votes = snapshot.val().song1votes;
@@ -182,7 +164,6 @@ db.ref("spotify").on("value", snapshot => {
         $("#s2NumOfVotes").html(snapshot.val().song2votes);
         song2votes = snapshot.val().song2votes;
     }
-
     if (song1votes == 15) {
         db.ref("spotify").update({
             song1votes: 0,
@@ -195,14 +176,15 @@ db.ref("spotify").on("value", snapshot => {
         // push winner here to db
         $("#s1Search, #s2Search").show();
         $("#s1, #s1Votes, #s2, #s2Votes").hide();
-        
         var img  = $("#s1Img img").attr("src");
         var song = $("#s1").attr("src");
         db.ref("winners").push({
             song: song,
             img: img
         });
-
+        // corner case to stop song if it max votes reached
+        // otherwise it will keep playing forever
+        $("#s1, #s2").attr("src", "");
         $("#s1Img, #s2Img").empty();
     }
     else if (song2votes == 15) {
@@ -217,24 +199,23 @@ db.ref("spotify").on("value", snapshot => {
         // push winner here to db
         $("#s1Search, #s2Search").show();
         $("#s1, #s1Votes, #s2, #s2Votes").hide();
-
         var img  = $("#s2Img img").attr("src");
         var song = $("#s2").attr("src");
         db.ref("winners").push({
             song: song,
             img: img
         });
-
+        // corner case to stop song if it max votes reached
+        // otherwise it will keep playing forever
+        $("#s1, #s2").attr("src", ""); 
         $("#s1Img, #s2Img").empty();
     }
 });
-
 db.ref("winners").on("child_added", snapshot => {
     var newDiv = $("<div>");
     newDiv.append($("<img>").attr("src", snapshot.val().img));
     newDiv.append($("<br>"));
     newDiv.append($("<iframe>").attr("src", snapshot.val().song).css("height", "80"));
     newDiv.css({"float": "left", "margin": "2%"});
-
     $("#winners").prepend(newDiv);
 });

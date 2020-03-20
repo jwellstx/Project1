@@ -56,7 +56,10 @@ h5{
     float: center;
     display: flex;
     margin-top: 20px;
+    padding: 20px;
+    /* width: 400px; */
 }
+
 /* #vote-button{
     flex-direction: column;
     align-items: center;

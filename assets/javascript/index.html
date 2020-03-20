@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Battles</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <script src="https://sdk.scdn.co/spotify-player.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+</head>
+
+<body>
+    <!-- <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <div id="s1Search" class="hidden">
+                    <label for="s1Name">Pick a song</label>
+                    <input id="s1Name" type="text" value="New Search" onfocus="this.value=''">
+                    <input id="s1Submit" type="submit" value="Submit">
+                </div>
+                <div id="s1Img"></div><br>
+                <iframe class="hidden" id="s1" src="" width="300" height="80" frameborder="0" allowtransparency="true"
+                    allow="encrypted-media"></iframe>
+                <br>
+                <div id="s1Votes" class="hidden">
+                    <button id="s1VoteSubmit" type="submit">Vote</button>
+                    <br>
+                    Song 1 Votes: <span id="s1NumOfVotes">0</span>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div id="s2Search" class="hidden">
+                    <label for="s2Name">Pick a song</label>
+                    <input id="s2Name" type="text" value="New Search" onfocus="this.value=''">
+                    <input id="s2Submit" type="submit" value="Submit">
+                </div>
+                <div id="s2Img"></div><br>
+                <iframe class="hidden" id="s2" src="" width="300" height="80" frameborder="0" allowtransparency="true"
+                    allow="encrypted-media"></iframe>
+                <br>
+                <div id="s2Votes" class="hidden">
+                    <button id="s2VoteSubmit" type="submit">Vote</button>
+                    <br>
+                    Song 2 Votes: <span id="s2NumOfVotes">0</span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <span id="count">15</span> votes to win!
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" style="text-align: center;">
+                <h1>Winners!</h1>
+                <span id="winners"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
