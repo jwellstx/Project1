@@ -3,17 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+#logo {
+    display: inline-block;
+    margin-top: 10px; 
+    margin-right: 10px;
+    height: 30px;
+    width: auto; 
+    border-radius: 10%; 
+  }
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
 }
-#timer{
-    color:white;
-    text-align: center;
-}
+
 h1{
-    color: white;
     text-align: center;
+    background: -webkit-linear-gradient(#1DB954, #c4302b);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px white;
+  font-size: 100px;
 }
 body{
     font-family: 'Permanent Marker', cursive;
@@ -46,7 +54,7 @@ input[type=text]{
 } 
 a{
     color:white; 
-    font-size: 20px;
+    font-size: 30px;
 }
 h5{
     color:white;
