@@ -55,14 +55,13 @@ h1{
     font-size: 150px;
 }
 .row{
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 h1 .battle-text{
     margin-bottom: 100px;
 }
 h2{
     font-size: 80px;
-    /* background-image: linear-gradient(to right,#1DB954, #c4302b); */
     background: -webkit-linear-gradient(#1DB954, #c4302b);
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -71,7 +70,6 @@ h2{
 button a{
     font-size: 50px;
     text-decoration: none;
-    /* background: black; */
 }
 button:hover{
     color:black;
@@ -83,6 +81,25 @@ button:hover{
     margin-bottom: 100px;
 }
 
+
+#battlebtn1{
+    animation-timing-function: ease;
+    position: relative;
+    animation: battlebtn1 2s 1;
+}
+@keyframes battlebtn1 {
+    0% {transform: rotate(0deg);left:-700px;}
+    100% {transform: rotate(-360deg);left:0px;}
+    }
+#battlebtn2{
+    animation-timing-function: ease;
+    position: relative;
+    animation: battlebtn2 2s 1;
+}
+@keyframes battlebtn2 {
+    0% {transform: rotate(0deg);right:-700px;}
+    100% {transform: rotate(-360deg);right:0px;}
+    } 
 footer {
     top: 0;
     padding: 0px;
