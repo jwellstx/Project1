@@ -7,10 +7,7 @@
 .jumbotron{
     background-color: rgba(45, 45, 45, 0.5);
 }
-#timer{
-    color:white;
-    text-align: center;
-}
+
 h1{
     color: white;
     text-align: center;
@@ -26,7 +23,6 @@ html,body{
 body{
     font-family: 'Permanent Marker', cursive;
     background-image: url("../Project1/images/background.jpg");
-    /* background-image: linear-gradient(to right, green,red); */
     font-size: 20px;
     color: white;
     height: 100%;
