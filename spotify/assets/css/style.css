@@ -17,10 +17,11 @@
 
 h1{
     text-align: center;
-    background: -webkit-linear-gradient(#1DB954, #c4302b);
+    background: -webkit-linear-gradient(#1DB954, black);
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px white;
+  /* color: #1DB954; */
+  text-shadow: 5px 5px white;
   font-size: 100px;
 }
 body{
