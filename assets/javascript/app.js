@@ -142,7 +142,7 @@ var spotify = {
             else {
                 spotify.song1votes++;
                 // prevent users from voting multiple times
-                // localStorage.setItem("hasvoted", true);
+                localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song1votes: spotify.song1votes,
@@ -157,7 +157,7 @@ var spotify = {
             else {
                 spotify.song2votes++;
                 // prevent users from voting multiple times
-                // localStorage.setItem("hasvoted", true);
+                localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song2votes: spotify.song2votes,
