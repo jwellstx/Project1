@@ -95,4 +95,8 @@ footer {
     padding: 20px;
     }
 
- 
+ #s1Name,
+ #s2Name {
+     margin-top: 1%;
+     margin-bottom: 1%;
+ }
