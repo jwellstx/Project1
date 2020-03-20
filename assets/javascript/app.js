@@ -203,6 +203,9 @@ db.ref("spotify").on("value", snapshot => {
             img: img
         });
 
+        // corner case to stop song if it max votes reached
+        // otherwise it will keep playing forever
+        $("#s1, #s2").attr("src", "");
         $("#s1Img, #s2Img").empty();
     }
     else if (song2votes == 15) {
@@ -225,6 +228,9 @@ db.ref("spotify").on("value", snapshot => {
             img: img
         });
 
+        // corner case to stop song if it max votes reached
+        // otherwise it will keep playing forever
+        $("#s1, #s2").attr("src", ""); 
         $("#s1Img, #s2Img").empty();
     }
 });
@@ -238,3 +244,7 @@ db.ref("winners").on("child_added", snapshot => {
 
     $("#winners").prepend(newDiv);
 });
+
+// $(() => {
+
+// })
