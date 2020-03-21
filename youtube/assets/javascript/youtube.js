@@ -33,10 +33,10 @@ $(document).ready(function () {
         }
         // check to make sure boths videos are selected, if not generate new videos
         if (snapshot.child("video1").exists()) {
-            
+            $("#player1").show();
             $("#player1").attr("src", dbref.video1)
         } if(snapshot.child("video2").exists()) {
-            
+            $("#player2").show();
             $("#player2").attr("src", dbRef.video2);
        }
         // db.ref("youtube").set({
