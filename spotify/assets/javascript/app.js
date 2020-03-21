@@ -146,13 +146,13 @@ var spotify = {
             Output: None
         */
         $("#s1VoteSubmit").on('click', function () {
-            var voted = localStorage.getItem("hasvoted");
+            var voted = localStorage.getItem("spotify_hasvoted");
 
             if (voted) return;
             else {
                 spotify.song1votes++;
                 // prevent users from voting multiple times
-                localStorage.setItem("hasvoted", true);
+                localStorage.setItem("spotify_hasvoted", true);
             }
             db.ref("spotify").update({
                 song1votes: spotify.song1votes,
@@ -161,13 +161,13 @@ var spotify = {
         });
 
         $("#s2VoteSubmit").on('click', function () {
-            var voted = localStorage.getItem("hasvoted");
+            var voted = localStorage.getItem("spotify_hasvoted");
 
             if (voted) return;
             else {
                 spotify.song2votes++;
                 // prevent users from voting multiple times
-                localStorage.setItem("hasvoted", true);
+                localStorage.setItem("spotify_hasvoted", true);
             }
             db.ref("spotify").update({
                 song2votes: spotify.song2votes,
@@ -198,8 +198,10 @@ var spotify = {
 
             if (spotify.song1votes === 15) {
                 spotify.winner(db, "1");
+                localStorage.removeItem("spotify_hasvoted");
             } else if (spotify.song2votes === 15) {
                 spotify.winner(db, "2");
+                localStorage.removeItem("spotify_hasvoted");
             }
         });
 
