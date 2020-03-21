@@ -203,6 +203,7 @@ var spotify = {
             newDiv.append($("<iframe>").attr("src", snapshot.val().song).css("height", "80"));
             newDiv.css({ "float": "left", "margin": "2%" });
             $("#winners").prepend(newDiv);
+            $("#latestWinner").empty().append(newDiv.clone().css("float", "none"));
         });
     },
     winner: (db, songNum) => {

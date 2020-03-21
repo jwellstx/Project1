@@ -115,3 +115,12 @@ footer {
      margin-top: 1%;
      margin-bottom: 1%;
  }
+
+ #winnerFormat {
+    width: 40%;
+    margin-left: 30%
+ }
+
+ #latestWinner {
+     margin-left: 50%;
+ }
