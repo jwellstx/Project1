@@ -167,7 +167,7 @@ $(document).ready(function () {
     })
     db.ref("winnersYT").endAt().limitToLast(8).on("child_added", snapshot => {
         var newDiv = $("<div>");
-        newDiv.append($("<iframe>").attr("src", snapshot.val().video).css("height", "120"));
+        newDiv.append($("<iframe>").attr("src", snapshot.val().video).css({"height": "250", "width": "360"}));
         newDiv.css({
             "float": "left",
             "margin": "10px"
