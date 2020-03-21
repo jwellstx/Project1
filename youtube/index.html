@@ -1,187 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!--still need the CSS and reset . css//-->
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <title>YouTube Battle</title>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n=" 
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+    <title>Youtify</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> 
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> 
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/index.html">Youtify</a>
+            <a href="../index.html"><img id ="logo" src="../youtify.png"></a>
+            <a class="nav-item nav-link" href="/index.html">Home</a>
             <a class="nav-item nav-link" href="../spotify/index.html">Spotify</a>
-        <a class="nav-item nav-link" href="../youtube/index.html">YouTube</a>
+        <a class="nav-item nav-link active" href="../youtube/index.html">YouTube<span class="sr-only">(current)</span></a>
           </div>
         </div>
       </nav>
       <div class="jumbotron">
-        <h1 class="display-4">Videos in Battle</h1>
+        <h1 class="youtube-text">YouTube Battle</h1>
       </div>
-      <!-- https://mdbootstrap.com/snippets/jquery/ascensus/419481 -->
-      
-      <!-- <div class="container">
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-header">
-             Next Genre
-            </div>
-            <div class="card-body" id="winners">
-              <h2 id="winner-song"></h2>
-            </div>
-          </div>
-          </div>
-    </div> -->
-    <!-- display timer -->
-    <!--Wondering About The Above Comments-->
-
-  <div class="container">
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-header">
-         Video
-        </div>
-        <div class="card-body" id="winners">
-          <h2 id="winner-song"></h2>
-        </div>
-      </div>
-      </div>
-</div>
-      <!-- FView -->
-  <div class="view">
-      <!-- Container -->
-      <div class="container">
-        
-        <!-- <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active">
-            Cras justo odio
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
-        </div> -->
-        <div class=col-md-6>
-        <div id="spotify" class="song">
-          <!-- Card -->
-          <div class="card">
-
-            <!-- Card image -->
-            <div class="view">
-                <!-- Spotifyimage -->
-              <img class="card-img-top" src="assets/images/back.jpg"
-                alt="Card image cap">
-              <a href="#" target="_blank">
-                <div class="mask gradient-card"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body text-center">
-
-              <h5 class="h5 font-weight-bold"><a href="#" target="_blank">Name of Creator(s)</a></h5>
-              <!-- update with song name  -->
-              <h5 class="h5 font-weight-bold">Vid Name</h5>
-
-              <audio id="music" preload="true">
-                  <!-- song link -->
-                  <source src="">
-              </audio>
-              <div id="audioplayer">
-                  <i id="pButton" class="fas fa-play"></i>
-                  <div id="timeline">
-                      <div id="playhead"></div>
+      <div class="view">
+        <div class="flex-container">
+          <div class="row">
+            <div class=col-md-6>
+              <div id="youtube" class="video">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div id="s1Search" class="hidden">
+                      <label for="s1Name">Pick a video</label>
+                      <input id="s1Name" type="text" value="New Search" onfocus="this.value=''">
+                      <input id="s1Submit" type="submit" value="Submit">
+                    </div>
+                    <div id="s1Img"></div><br>
+                    <iframe class="hidden" id="s1" src="" width="300" height="80" frameborder="0" allowtransparency="true"
+                      allow="encrypted-media"></iframe>
+                    <br>
+                    <div id="s1Votes" class="hidden">
+                      <button id="s1VoteSubmit" type="submit">Vote</button>
+                      <br>
+                      Song 1 Votes: <span id="s1NumOfVotes">0</span>
+                    </div>
                   </div>
+                </div>
               </div>
-
             </div>
-
-          </div>
-          <!-- Card -->
-
-          </div>
-
-          <div id="vote-button"><button type="button" class="btn btn-success">Vote</button></div>
-<!-- vote button -->
-        </div>
-      <!-- </div> -->
-
-      
-        <div class=col-md-6>
-          <div id="spotify" class="song">
-          <!-- Card -->
-          <div class="card">
-
-            <!-- Card image -->
-            <div class="view">
-                <!-- Spotifyimage -->
-              <img class="card-img-top" src="assets/images/back.jpg"
-                alt="Card image cap">
-              <a href="#" target="_blank">
-                <div class="mask gradient-card"></div>
-              </a>
-            </div>
-
-            <!-- Card content -->
-            <div class="card-body text-center">
-                <!-- update with artist name -->
-              <h5 class="h5 font-weight-bold"><a href="#" target="_blank">Name of Creator(s)</a></h5>
-              <!-- update with song name  -->
-              <h5 class="h5 font-weight-bold">Vid Name</h5>
-
-              <audio id="music" preload="true">
-                  <!-- song link -->
-                  <source src="#">
-              </audio>
-              <div id="audioplayer">
-                  <i id="pButton" class="fas fa-play"></i>
-                  <div id="timeline">
-                      <div id="playhead"></div>
+            <div class=col-md-6>
+              <div id="youtube" class="video">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div id="s2Search" class="hidden">
+                      <label for="s2Name">Pick a song</label>
+                      <input id="s2Name" type="text" value="New Search" onfocus="this.value=''">
+                      <input id="s2Submit" type="submit" value="Submit">
+                    </div>
+                    <div id="s2Img"></div><br>
+                    <iframe class="hidden" id="s2" src="" width="300" height="80" frameborder="0" allowtransparency="true"
+                      allow="encrypted-media"></iframe>
+                    <br>
+                    <div id="s2Votes" class="hidden">
+                      <button id="s2VoteSubmit" type="submit">Vote</button>
+                      <br>
+                      Video 2 Votes: <span id="s2NumOfVotes">0</span>
+                    </div>
                   </div>
+                </div>
               </div>
-
             </div>
-
           </div>
-          <!-- Card -->
-
+        <br>
+        <div class="row">
+          <div class="col-lg-12" style="text-align: center;">
+            <span id="timer">15</span> votes to win!
+          </div>
         </div>
-        <div id="vote-button"><button type="button" class="btn btn-success">Vote</button></div>
-<!-- vote button -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  Latest Winners!
+                </div>
+                <div class="card-body">
+                  <span id="latestWinner"></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- div -->
-   
+        <div class="row">
+          <div class="col-lg-12" style="text-align: center;">
+            <div class="card">
+              <div class="card-header">
+                Winners!
+              </div>
+              <div class="card-body" id="winners">
+                <span id="winners"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- container -->
-      <div class="container">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            Winners
-          </div>
-          <div class="card-body" id="winners">
-            <h2 id="winner-song"></h2>
-          </div>
-        </div>
-        </div>
-  </div>
-  <!-- view -->
+      </div>
+    
+      </div>
+      <script type="text/javascript" src="assets/javascript/app.js" charset="UTF-8"></script>
+    </body>
+    <footer>
+      <span> &copy; Copyright 2020, Youtify</span>
+    </footer>
+    
+    </html>
 
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
+     
