@@ -81,10 +81,10 @@ $(document).ready(function () {
             }).done(function (response) {
                 // console.log(response.items[Math.random() * response.items.length]);
                 var pickVideo1 = response.items[Math.floor(Math.random() * response.items.length)].id.videoId;
-                $("#player1").attr("src", "http://www.youtube.com/embed/" + pickVideo1);
+                $("#player1").attr("src", "https://www.youtube.com/embed/" + pickVideo1);
 
                 db.ref("youtube").update({
-                    video1: "http://www.youtube.com/embed/" + pickVideo1,
+                    video1: "https://www.youtube.com/embed/" + pickVideo1,
 
                 })
             })
@@ -110,9 +110,9 @@ $(document).ready(function () {
                 method: "Get"
             }).done(function (response) {
                 var pickVideo2 = response.items[Math.floor(Math.random() * response.items.length)].id.videoId;
-                $("#player2").attr("src", "http://www.youtube.com/embed/" + pickVideo2);
+                $("#player2").attr("src", "https://www.youtube.com/embed/" + pickVideo2);
                 db.ref("youtube").update({
-                    video2: "http://www.youtube.com/embed/" + pickVideo2
+                    video2: "https://www.youtube.com/embed/" + pickVideo2
 
                 })
             })
