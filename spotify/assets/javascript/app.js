@@ -242,16 +242,9 @@ var spotify = {
         // get both img and spotify src attr to store in the db as a winner
         var img = $("#s" + songNum + "Img img").attr("src");
         var song = $("#s" + songNum).attr("src");
-        // workaround to not add the song many times!!! 
-        db.ref("winners").endAt().limitToLast(1).once("child_added", snapshot => {
-            if (snapshot.val().song === song) return;
-            else {
-                db.ref("winners").push({
-                    song: song,
-                    img: img
-                });
-            }
-        });
+
+        // We have a cloud function in firebase that checks if winner have hit 15 votes and will add winner
+        // to winner db, that way its not duplicated when multiple users are connected
 
         // corner case to stop song if it max votes reached
         // otherwise it will keep playing forever
