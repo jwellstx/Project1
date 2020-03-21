@@ -115,10 +115,10 @@ footer {
     border-radius: 18px;
     background: orange;
     padding: 20px; 
-    width: 480px;
     height: 15px; 
     margin-top: 5%;
-     margin-bottom: 5%;
+    margin-bottom: 5%;
+    text-align: center;
  }
  #s1Submit, #s2Submit {
      border-radius: 18px;
