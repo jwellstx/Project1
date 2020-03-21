@@ -25,37 +25,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div id="search1">
+                <div class="search1">
                     <label for="inputVideo1">Type a keyword</label>
                     <input type="keyword" class="form-control" id="v1Input">
 
-                    <button type="submit1" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="submit1 btn btn-primary">Submit</button>
                 </div>
                 <div class="col-lg-6 text-center">
                     <iframe id="player1" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
                         frameborder="0"></iframe>
                     <br>
-                    <button id="video1VoteSubmit" type="submit">Vote</button>
-                    <br>
-                    video 1 Votes: <span id="video1votes">0</span>
+                    <div class="votes1">
+                        <button id="video1VoteSubmit" type="submit">Vote</button>
+                        <br>
+                        video 1 Votes: <span id="video1votes">0</span>
+                    </div>
                 </div>
                 <br />
             </div>
             <div class="col-md-6">
+                <div class="search2">
+                    <label for="inputVideo2">Type a keyword</label>
+                    <input type="keyword" class="form-control" id="v2Input">
 
-                <label for="inputVideo2">Type a keyword</label>
-                <input type="keyword" class="form-control" id="v2Input">
-
-                <button type="submit2" class="btn btn-primary">Submit</button>
-
+                    <button type="submit" class="submit2 btn btn-primary">Submit</button>
+                </div>
 
                 <div class="col-lg-6 text-center">
                     <iframe id="player2" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
                         frameborder="0"></iframe>
                     <br>
-                    <button id="video2VoteSubmit" type="submit">Vote</button>
-                    <br>
-                    video 2 Votes: <span id="video2votes">0</span>
+                    <div class="votes2">
+                        <button id="video2VoteSubmit" type="submit">Vote</button>
+                        <br>
+                        video 2 Votes: <span id="video2votes">0</span>
+                    </div>
                 </div>
             </div>
         </div>
