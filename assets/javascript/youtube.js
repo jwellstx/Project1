@@ -74,7 +74,7 @@ $(document).ready(function () {
         newvideos1();
 
     })
-db
+
 
     function newvideos1() {
         // var video = ["surfing", "skateboarding", "skiing"]
