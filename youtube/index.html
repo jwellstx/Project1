@@ -52,10 +52,10 @@
           <div id="youtube" class="video">
             <div class="card">
               <div class="card-body text-center">
-                <div id="s1Search" class="hidden">
-                  <label for="s1Name">Pick a video</label>
+                <div id="s1Search" class="search1 hidden">
+                  <label for="v1Input">Pick a video</label>
                   <input id="v1Input" type="text" value="New Search" onfocus="this.value=''">
-                  <input id="s1Submit" type="submit" value="Submit">
+                  <input id="s1Submit" type="submit" value="Submit" class="submit1">
                 </div>
 
                 <iframe id="player1" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
@@ -75,11 +75,11 @@
             <div class="card">
               <div class="card-body text-center">
                 <div id="s2Search" class="search2 hidden">
-                  <label for="inputVideo2">Pick a song</label>
+                  <label for="v2Input">Pick a video</label>
                   <input id="v2Input" type="text" value="New Search" onfocus="this.value=''">
                   <input id="s2Submit" type="submit" value="Submit" class="submit2">
                 </div>
-                <div id="s2Img"></div><br>
+                
                 <iframe id="player2" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
                   frameborder="0"></iframe>
                 <br>
@@ -128,8 +128,10 @@
   </div>
 
   </div>
-  <script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
-  <script type="text/javascript" src="assets/javascript/youtube.js" charset="UTF-8"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
+    <script src="assets/javascript/youtube.js"></script>
 
 </body>
 <footer>

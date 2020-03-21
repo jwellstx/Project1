@@ -110,8 +110,8 @@ footer {
     padding: 20px;
     }
 
- #s1Name,
- #s2Name {
+ #v1Input,
+ #v2Input {
     border-radius: 18px;
     background: orange;
     padding: 20px; 
@@ -120,10 +120,10 @@ footer {
     margin-bottom: 5%;
     text-align: center;
  }
- #s1Submit, #s2Submit {
+ #submit1, #submit2 {
      border-radius: 18px;
  }
- #s1VoteSubmit, #s2VoteSubmit {
+ #video1VoteSubmit, #video2VoteSubmit {
      border-radius: 18px;
 
  }
@@ -134,5 +134,6 @@ footer {
  }
 
  #latestWinner {
-     margin-left: 50%;
+    margin-left: 30%;
+
  }

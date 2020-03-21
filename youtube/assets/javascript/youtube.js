@@ -4,13 +4,13 @@ $(document).ready(function () {
     $(".votes1").hide();
     $(".votes2").hide();
     var firebaseConfig = {
-        apiKey: "AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw",
-        authDomain: "project-1-271405.firebaseapp.com",
-        databaseURL: "https://project-1-271405.firebaseio.com",
-        projectId: "project-1-271405",
-        storageBucket: "project-1-271405.appspot.com",
-        messagingSenderId: "152697641744",
-        appId: "1:152697641744:web:80faaa2f0589f1973ca395"
+        apiKey: "AIzaSyBTFg6x0Ndb220S1wjri0hRB2ldmQQ2mds",
+        authDomain: "project1-battles.firebaseapp.com",
+        databaseURL: "https://project1-battles.firebaseio.com",
+        projectId: "project1-battles",
+        storageBucket: "project1-battles.appspot.com",
+        messagingSenderId: "492185445748",
+        appId: "1:492185445748:web:e42c41dafba90b020d3821"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -33,12 +33,17 @@ $(document).ready(function () {
         }
         // check to make sure boths videos are selected, if not generate new videos
         if (snapshot.child("video1").exists()) {
-           // $("#player1").show();
-            $("#player1").attr("src", dbref.video1)
-        } if(snapshot.child("video2").exists()) {
-           // $("#player2").show();
+            $("#player1").show();
+            $(".search1").hide();
+            $(".votes1").show();
+            $("#player1").attr("src", dbRef.video1)
+        }
+        if (snapshot.child("video2").exists()) {
+            $("#player2").show();
+            $(".search2").hide();
+            $(".votes2").show();
             $("#player2").attr("src", dbRef.video2);
-       }
+        }
         // db.ref("youtube").set({
         //     video1votes,
         //     video2votes,
@@ -60,6 +65,7 @@ $(document).ready(function () {
         $(".votes1").show();
         newvideos1();
     })
+
     function newvideos1() {
         // var video = ["surfing", "skateboarding", "skiing"]
         var queryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + video1 + '&type=video&key=AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw';
@@ -76,6 +82,11 @@ $(document).ready(function () {
                 // console.log(response.items[Math.random() * response.items.length]);
                 var pickVideo1 = response.items[Math.floor(Math.random() * response.items.length)].id.videoId;
                 $("#player1").attr("src", "http://www.youtube.com/embed/" + pickVideo1);
+
+                db.ref("youtube").update({
+                    video1: "http://www.youtube.com/embed/" + pickVideo1,
+
+                })
             })
         })
     }
@@ -88,6 +99,7 @@ $(document).ready(function () {
         $(".search2").hide();
         $(".votes2").show();
     })
+
     function newvideos2() {
         var queryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + video2 + '&type=video&key=AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw';
         db.ref().once("value", snapshot => {
@@ -99,6 +111,10 @@ $(document).ready(function () {
             }).done(function (response) {
                 var pickVideo2 = response.items[Math.floor(Math.random() * response.items.length)].id.videoId;
                 $("#player2").attr("src", "http://www.youtube.com/embed/" + pickVideo2);
+                db.ref("youtube").update({
+                    video2: "http://www.youtube.com/embed/" + pickVideo2
+
+                })
             })
         })
     }
@@ -108,7 +124,7 @@ $(document).ready(function () {
         else {
             video1votes++;
             // prevent users from voting multiple times
-            // localStorage.setItem("hasvoted", true);
+            localStorage.setItem("hasvoted", true);
         }
         db.ref("youtube").update({
             video1votes: video1votes,
@@ -120,7 +136,7 @@ $(document).ready(function () {
         else {
             video2votes++;
             // prevent users from voting multiple times
-            // localStorage.setItem("hasvoted", true);
+            localStorage.setItem("hasvoted", true);
         }
         db.ref("youtube").update({
             video2votes: video2votes,
@@ -129,69 +145,67 @@ $(document).ready(function () {
     db.ref("youtube/video1votes").on("value", function (snapshot) {
         video1votes = snapshot.val();
         $("#video1votes").html(snapshot.val());
-        if (snapshot.val() === 15) {
-        }
+        if (snapshot.val() === 15) {}
         if (video1votes == 15) {
             var video = $("#player1").attr("src");
-            db.ref("winners").push({
-                video: video,
-            });
-            console.log(video);
+            // console.log(video);
         }
         if (video1votes == 15) {
             db.ref("youtube").update({
                 video1votes: 0,
-                video2votes: 0
+                video2votes: 0,
+                video1: null,
+                video2: null
             })
+            $(".search1, .search2").show();
+            $("#player1, #player2").hide();
+            $(".votes1, .votes2").hide();
+
+
         }
         // 
     })
-    db.ref("winners").on("child_added", snapshot => {
+    db.ref("winners").endAt().limitToLast(8).on("child_added", snapshot => {
         var newDiv = $("<div>");
         newDiv.append($("<iframe>").attr("src", snapshot.val().video).css("height", "120"));
-        newDiv.css("float", "left");
+        newDiv.css({
+            "float": "left",
+            "margin": "10px"
+        });
         $("#winners").prepend(newDiv);
-        $("#latestWinner").empty().append(newDiv);
+        $("#latestWinner").empty();
+
+        $("#latestWinner").append(newDiv.clone());
     });
     db.ref("youtube/video2votes").on("value", function (snapshot) {
         // snapshot.val();
         video2votes = snapshot.val();
         $("#video2votes").html(snapshot.val());
         if (snapshot.val() === 15) {
-        }
-        if (video2votes == 15) {
-            var video = $("#player2").attr("src");
-            db.ref("winners").push({
-                video: video,
-            });
-            console.log(video);
-        }
-        if (video2votes == 15) {
             db.ref("youtube").update({
                 video1votes: 0,
-                video2votes: 0
+                video2votes: 0,
+                video1: null,
+                video2: null
             })
+            $(".search1, .search2").show();
+            $("#player1, #player2").hide();
+            $(".votes1, .votes2").hide();
         }
+
+
+
     });
-    function reset(){
-        $(".search1").show();
-        $(".search2").show();
-        $("#player1, #player2").hide();
-        $(".votes1, .votes2").hide();
-    }
- 
+    // function reset(){
+    //     $(".search1").show();
+    //     $(".search2").show();
+    //     $("#player1, #player2").hide();
+    //     $(".votes1, .votes2").hide();
+    // }
+
 })
 // document.ready
 // iframe and votes.hide();
 // submit.on search.hide(); iframe.show();
 // if player1 exists && player2 existss => votes.show();
 // when either one is equal to 15 then
-Collapse
-
-
-
-
-
-
-
-

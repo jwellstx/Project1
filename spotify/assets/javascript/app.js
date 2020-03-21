@@ -49,8 +49,7 @@ var spotify = {
             // lets the voting begin!!
             if (snapshot.child("song1").exists() && snapshot.child("song2").exists()) {
                 $("#s1Votes, #s2Votes").show();
-            }
-            else {
+            } else {
                 $("#s1Votes, #s2Votes").hide();
             }
         });
@@ -63,8 +62,7 @@ var spotify = {
                 db.ref("spotify/song1Img").once("value", snapshot2 => {
                     $("#s1Img").empty().html($("<img>").attr("src", snapshot2.val()));
                 });
-            }
-            else {
+            } else {
                 $("#s1Search").show();
                 $("#s1Votes").hide();
             }
@@ -77,8 +75,7 @@ var spotify = {
                 db.ref("spotify/song2Img").once("value", snapshot2 => {
                     $("#s2Img").empty().html($("<img>").attr("src", snapshot2.val()));
                 });
-            }
-            else {
+            } else {
                 $("#s2Search").show();
                 $("#s2Votes").hide();
             }
@@ -94,8 +91,8 @@ var spotify = {
             Ouput: None
         */
         $("#s" + songNum + "Submit").on("click", function () {
-            var access_token = "";   // access token to call spotify api 
-            var songurl = "https://open.spotify.com/embed/track/";      // url to get song track
+            var access_token = ""; // access token to call spotify api 
+            var songurl = "https://open.spotify.com/embed/track/"; // url to get song track
             var songName = $("#s" + songNum + "Name").val().trim();
 
             db.ref().once("value", snapshot => {
@@ -155,7 +152,7 @@ var spotify = {
             else {
                 spotify.song1votes++;
                 // prevent users from voting multiple times
-                // localStorage.setItem("hasvoted", true);
+                localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song1votes: spotify.song1votes,
@@ -170,7 +167,7 @@ var spotify = {
             else {
                 spotify.song2votes++;
                 // prevent users from voting multiple times
-                // localStorage.setItem("hasvoted", true);
+                localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song2votes: spotify.song2votes,
@@ -201,8 +198,7 @@ var spotify = {
 
             if (spotify.song1votes === 15) {
                 spotify.winner(db, "1");
-            }
-            else if (spotify.song2votes === 15) {
+            } else if (spotify.song2votes === 15) {
                 spotify.winner(db, "2");
             }
         });
@@ -214,7 +210,10 @@ var spotify = {
             newDiv.append($("<img>").attr("src", snapshot.val().img));
             newDiv.append($("<br>"));
             newDiv.append($("<iframe>").attr("src", snapshot.val().song).css("height", "80"));
-            newDiv.css({ "float": "left", "margin": "2%" });
+            newDiv.css({
+                "float": "left",
+                "margin": "2%"
+            });
             $("#winners").prepend(newDiv);
             $("#latestWinner").empty().append(newDiv.clone().css("float", "none"));
         });
@@ -235,9 +234,9 @@ var spotify = {
             song1Img: null,
             song2Img: null,
         });
-        $("#s1Search, #s2Search").show();  // enable search bar
-        $("#s1Name, #s2Name").val("New Search");  // reset placeholder value from previous value
-        $("#s1, #s1Votes, #s2, #s2Votes").hide();  // disable votes until both songs selected
+        $("#s1Search, #s2Search").show(); // enable search bar
+        $("#s1Name, #s2Name").val("New Search"); // reset placeholder value from previous value
+        $("#s1, #s1Votes, #s2, #s2Votes").hide(); // disable votes until both songs selected
 
         // get both img and spotify src attr to store in the db as a winner
         var img = $("#s" + songNum + "Img img").attr("src");
