@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n=" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+  <title>Youtify</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a href="../index.html"><img id="logo" src="../youtify.png"></a>
+        <a class="nav-item nav-link" href="/index.html">Home</a>
+        <a class="nav-item nav-link" href="../spotify/index.html">Spotify</a>
+        <a class="nav-item nav-link active" href="../youtube/index.html">YouTube<span
+            class="sr-only">(current)</span></a>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <h1 class="youtube-text">YouTube Battle</h1>
+  </div>
+  <div class="view">
+    <div class="flex-container">
+      <div class="row">
+        <div class=col-md-6>
+          <div id="youtube" class="video">
+            <div class="card">
+              <div class="card-body text-center">
+                <div id="s1Search" class="search1 hidden">
+                  <label for="v1Input">Pick a video</label>
+                  <input id="v1Input" type="text" value="New Search" onfocus="this.value=''">
+                  <input id="s1Submit" type="submit" value="Submit" class="submit1">
+                </div>
+
+                <iframe id="player1" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
+                  frameborder="0"></iframe>
+                <br>
+                <div id="s1Votes" class="votes1 hidden">
+                  <button id="video1VoteSubmit" type="submit">Vote</button>
+                  <br>
+                  Video 1 Votes: <span id="video1votes">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class=col-md-6>
+          <div id="youtube" class="video">
+            <div class="card">
+              <div class="card-body text-center">
+                <div id="s2Search" class="search2 hidden">
+                  <label for="v2Input">Pick a video</label>
+                  <input id="v2Input" type="text" value="New Search" onfocus="this.value=''">
+                  <input id="s2Submit" type="submit" value="Submit" class="submit2">
+                </div>
+                
+                <iframe id="player2" type="text/html" width="320" height="200" src="http://www.youtube.com/embed/"
+                  frameborder="0"></iframe>
+                <br>
+                <div id="s2Votes" class="votes2 hidden">
+                  <button id="video2VoteSubmit" type="submit">Vote</button>
+                  <br>
+                  Video 2 Votes: <span id="video2votes">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12" style="text-align: center;">
+          <span id="timer">15</span> votes to win!
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              Latest Winners!
+            </div>
+            <div class="card-body">
+              <span id="latestWinner"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12" style="text-align: center;">
+        <div class="card">
+          <div class="card-header">
+            Winners!
+          </div>
+          <div class="card-body" id="winners">
+            <span id="winners"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/api.js?onload=handleClientLoad"></script>
+    <script src="assets/javascript/youtube.js"></script>
+
+</body>
+<footer>
+  <span> &copy; Copyright 2020, Youtify</span>
+</footer>
+
+</html>

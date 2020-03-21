@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <title>Youtify</title>
 </head>
+
 <body>
-    <h1>Hello</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a href="/index.html"><img id="logo" src="youtify.png"></a>
+        <a class="nav-item nav-link active" href="../Project1/index.html">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="../Project1/spotify/index.html">Spotify</a>
+        <a class="nav-item nav-link" href="../Project1/youtube/index.html">YouTube</a>
+      </div>
+    </div>
+  </nav>
+<div class="jumbotron">
+    <h1 class="battle-text">Youtify</h1>
+</div>
+<div class="view">
+    <div class="container">
+        <div class="row">
+            <h2 class="battle-text">Pick Your Battle!</h1>
+        </div>
+    </div>
+        <div class="row">
+            <div id="battle-button">
+                <button id="battlebtn1" type="submit" class="btn btn-success"><a href="../Project1/spotify/index.html">Spotify Battle</a></button>
+            </div>
+            <div id="battle-button">
+                <button id="battlebtn2" type="text" class="btn btn-danger"><a href="../Project1/youtube/index.html">Youtube Battle</a></button>
+            </div>
+        </div>
+    </div>
 </body>
+<footer>
+  <span> &copy; Copyright 2020, Youtify</span>
+</footer>
 </html>
