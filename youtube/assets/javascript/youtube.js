@@ -145,10 +145,10 @@ $(document).ready(function () {
     db.ref("youtube/video1votes").on("value", function (snapshot) {
         video1votes = snapshot.val();
         $("#video1votes").html(snapshot.val());
-        if (snapshot.val() === 15) {}
         if (video1votes == 15) {
             var video = $("#player1").attr("src");
             // console.log(video);
+            localStorage.removeItem("hasvoted");
         }
         if (video1votes == 15) {
             db.ref("youtube").update({
@@ -191,21 +191,12 @@ $(document).ready(function () {
             $(".search1, .search2").show();
             $("#player1, #player2").hide();
             $(".votes1, .votes2").hide();
+            localStorage.removeItem("hasvoted");
         }
 
 
 
     });
-    // function reset(){
-    //     $(".search1").show();
-    //     $(".search2").show();
-    //     $("#player1, #player2").hide();
-    //     $(".votes1, .votes2").hide();
-    // }
+    
 
 })
-// document.ready
-// iframe and votes.hide();
-// submit.on search.hide(); iframe.show();
-// if player1 exists && player2 existss => votes.show();
-// when either one is equal to 15 then
