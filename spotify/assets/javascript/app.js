@@ -25,10 +25,10 @@ var spotify = {
         });
 
         spotify.initGame(db);
+        spotify.setupDBlistenerAndWinnerChecker(db);
         spotify.setupSubmitListenersAndSongSelection(db, "1");
         spotify.setupSubmitListenersAndSongSelection(db, "2");
         spotify.setupVoteButtonListeners(db);
-        spotify.setupDBlistenerAndWinnerChecker(db);
 
     },
     initGame: (db) => {
@@ -46,28 +46,41 @@ var spotify = {
             spotify.song1votes = snapshot.child("song1votes").exists() ? dbRef.song1votes : 0;
             spotify.song2votes = snapshot.child("song1votes").exists() ? dbRef.song2votes : 0;
 
-            // check to make sure boths songs are selected, if not wait for both songs to be selected
-            if (snapshot.child("song1").exists()) {
-                $("#s1").attr("src", dbRef.song1);
-                $("#s1Img").append($("<img>").attr("src", dbRef.song1Img));
-                $("#s1Search").hide();
-                $("#s1").show();
-            }
-            else {
-                $("#s1Search").show();
-            }
-            if (snapshot.child("song2").exists()) {
-                $("#s2").attr("src", dbRef.song2);
-                $("#s2Img").append($("<img>").attr("src", dbRef.song2Img));
-                $("#s2Search").hide();
-                $("#s2").show();
-            }
-            else {
-                $("#s2Search").show();
-            }
             // lets the voting begin!!
             if (snapshot.child("song1").exists() && snapshot.child("song2").exists()) {
                 $("#s1Votes, #s2Votes").show();
+            }
+            else {
+                $("#s1Votes, #s2Votes").hide();
+            }
+        });
+
+        db.ref("spotify/song1").on("value", snapshot => {
+            if (snapshot !== null && snapshot.val()) {
+                $("#s1Search").hide();
+                $("#s1").show();
+                $("#s1").attr("src", snapshot.val());
+                db.ref("spotify/song1Img").once("value", snapshot2 => {
+                    $("#s1Img").empty().html($("<img>").attr("src", snapshot2.val()));
+                });
+            }
+            else {
+                $("#s1Search").show();
+                $("#s1Votes").hide();
+            }
+        });
+        db.ref("spotify/song2").on("value", snapshot => {
+            if (snapshot !== null && snapshot.val()) {
+                $("#s2Search").hide();
+                $("#s2").show();
+                $("#s2").attr("src", snapshot.val());
+                db.ref("spotify/song2Img").once("value", snapshot2 => {
+                    $("#s2Img").empty().html($("<img>").attr("src", snapshot2.val()));
+                });
+            }
+            else {
+                $("#s2Search").show();
+                $("#s2Votes").hide();
             }
         });
     },
@@ -99,8 +112,8 @@ var spotify = {
                     },
                     success: function (response) {
                         // Update song selector with the album art and spotify player
-                        $("#s" + songNum).attr("src", songurl + response.tracks.items[0].id);
-                        $("#s" + songNum + "Img").html($("<img>").attr("src", response.tracks.items[0].album.images[1].url));
+                        // $("#s" + songNum).attr("src", songurl + response.tracks.items[0].id);
+                        // $("#s" + songNum + "Img").html($("<img>").attr("src", response.tracks.items[0].album.images[1].url));
                         // Update song information in DB so we can sync across users
                         if (songNum === "1") {
                             db.ref("spotify").update({
@@ -142,7 +155,7 @@ var spotify = {
             else {
                 spotify.song1votes++;
                 // prevent users from voting multiple times
-                localStorage.setItem("hasvoted", true);
+                // localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song1votes: spotify.song1votes,
@@ -157,7 +170,7 @@ var spotify = {
             else {
                 spotify.song2votes++;
                 // prevent users from voting multiple times
-                localStorage.setItem("hasvoted", true);
+                // localStorage.setItem("hasvoted", true);
             }
             db.ref("spotify").update({
                 song2votes: spotify.song2votes,
@@ -193,7 +206,7 @@ var spotify = {
                 spotify.winner(db, "2");
             }
         });
-        
+
         // Use song and album urls from the db to update the winners selector win someone wins. Limit 10
         db.ref("winners").endAt().limitToLast(12).on("child_added", snapshot => {
             $("#winner").empty();
@@ -229,9 +242,15 @@ var spotify = {
         // get both img and spotify src attr to store in the db as a winner
         var img = $("#s" + songNum + "Img img").attr("src");
         var song = $("#s" + songNum).attr("src");
-        db.ref("winners").push({
-            song: song,
-            img: img
+        // workaround to not add the song many times!!! 
+        db.ref("winners").endAt().limitToLast(1).once("child_added", snapshot => {
+            if (snapshot.val().song === song) return;
+            else {
+                db.ref("winners").push({
+                    song: song,
+                    img: img
+                });
+            }
         });
 
         // corner case to stop song if it max votes reached
@@ -244,76 +263,3 @@ var spotify = {
 $(() => {
     spotify.Play();
 })
-
-
-
-
-
-/*
-
-
- $("#s2Submit").on("click", function () {
-            var access_token = "";   // access token to call spotify api
-            var songurl = "https://open.spotify.com/embed/track/";      // url to get song track
-            var song2Name = $("#s2Name").val().trim();
-
-            db.ref().once("value", snapshot => {
-                // when new songs are needed, get the id and pass from DB and encode it for api call
-                var dbRef = snapshot.val();
-                access_token = dbRef.newuser.access_token;
-            }).then(function () {
-                // same as previous function but for second song
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/search?q=' + song2Name + '&type=track&limit=1&offset=0',
-                    method: "GET",
-                    headers: {
-                        'Authorization': 'Bearer ' + access_token
-                    },
-                    success: function (response) {
-                        console.log(response.tracks.items[0].album.images[2].url);
-                        $("#s2").attr("src", songurl + response.tracks.items[0].id);
-                        $("#s2Img").html($("<img>").attr("src", response.tracks.items[0].album.images[1].url));
-                        db.ref("spotify").update({
-                            song2: songurl + response.tracks.items[0].id,
-                            song2Img: response.tracks.items[0].album.images[1].url
-                        });
-                        $("#s2Search").hide();
-                        $("#s2, #s2votes").show();
-                    }
-                });
-            });
-        });
-        $(document).on("keyup", "#s2Name", function (event) {
-            if (event.key !== "Enter") return;
-            $('#s2Submit').click();
-            event.preventDefault();
-        });
-
-///////////////////////////////////////////////////////////////////////////////
-
-
-                db.ref("spotify").update({
-                    song1votes: 0,
-                    song2votes: 0,
-                    song1: null,
-                    song2: null,
-                    song1Img: null,
-                    song2Img: null,
-                });
-                // push winner here to db
-                $("#s1Search, #s2Search").show();
-                $("#s1, #s1Votes, #s2, #s2Votes").hide();
-
-                var img = $("#s2Img img").attr("src");
-                var song = $("#s2").attr("src");
-                db.ref("winners").push({
-                    song: song,
-                    img: img
-                });
-
-                // corner case to stop song if it max votes reached
-                // otherwise it will keep playing forever
-                $("#s1, #s2").attr("src", "");
-                $("#s1Img, #s2Img").empty();
-            }
-*/
