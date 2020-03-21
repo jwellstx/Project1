@@ -43,13 +43,20 @@ db.ref("youtube").once("value", snapshot => {
         video1votes,
         video2votes
     });
+
+    // if (video1votes == 15) {
+    //     db.ref("youtube").update({
+    //         video1votes: 0,
+    //         video2votes: 0,
+
+    //     }); }
+
 });
 
 
 function newvideos() {
-    var video = ["surfing", "fishing", "skateboarding"];
-    var topic = video[Math.floor(Math.random() * video.length)];
-    var queryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&type=video&key=AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw';
+    var video = $("$input").val().trim();
+    var queryUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=' + video + '&type=video&key=AIzaSyD_hRyR6sbL4dXjrTlyjFNU4Z5uxR6C1Sw';
     // --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
     // --header 'Accept: application/json' \
     // --compressed
@@ -71,7 +78,7 @@ function newvideos() {
     })
 }
 
-$("#video1vote").on('click', function () {
+$("#video1VoteSubmit").on('click', function () {
     var voted = localStorage.getItem("hasvoted");
 
     if (voted) return;
@@ -84,7 +91,7 @@ $("#video1vote").on('click', function () {
         video1votes: video1votes,
     });
 });
-$("#video2vote").on('click', function () {
+$("#video2VoteSubmit").on('click', function () {
     var voted = localStorage.getItem("hasvoted");
 
     if (voted) return;
@@ -99,15 +106,42 @@ $("#video2vote").on('click', function () {
 
 });
 
-db.ref("youtube/video1votes").on("value", function(snapshot){
+db.ref("youtube/video1votes").on("value", function (snapshot) {
     // snapshot.val();
-    
+
     $("#video1votes").html(snapshot.val());
 
-    if(snapshot.val() === 15){
+    if (snapshot.val() === 15) {
         alert("Video 1 Won");
+
     }
+
+    // 
 })
 
+db.ref("youtube/video2votes").on("value", function (snapshot) {
+    // snapshot.val();
+
+    $("#video2votes").html(snapshot.val());
+
+    if (snapshot.val() === 15) {
+        alert("Video 2 Won");
+    }
 
 
+});
+var video = $("#player1").attr("src");
+db.ref("winners").push({
+    video: video,
+});
+console.log(video);
+
+
+db.ref("winners").on("child_added", snapshot => {
+     var newDiv = $("<div>");
+    
+     newDiv.append($("<iframe>").attr("src", snapshot.val().video).css("height", "120"));
+newDiv.css("float", "left");
+
+     $("#winners").prepend(newDiv);
+});
