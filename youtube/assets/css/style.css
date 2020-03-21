@@ -17,7 +17,7 @@
 
 h1{
     text-align: center;
-    background: -webkit-linear-gradient(#1DB954, black);
+    background: -webkit-linear-gradient( #C4302B, orange);
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px white;
@@ -25,7 +25,7 @@ h1{
 }
 body{
     font-family: 'Permanent Marker', cursive;
-    background-image: linear-gradient(to right,#1DB954, blue);
+    background-image: linear-gradient(to right,#C4302B, orange);
     font-size: 40px;
     color: white;
 }
@@ -112,8 +112,20 @@ footer {
 
  #s1Name,
  #s2Name {
-     margin-top: 1%;
-     margin-bottom: 1%;
+    border-radius: 18px;
+    background: orange;
+    padding: 20px; 
+    width: 480px;
+    height: 15px; 
+    margin-top: 5%;
+     margin-bottom: 5%;
+ }
+ #s1Submit, #s2Submit {
+     border-radius: 18px;
+ }
+ #s1VoteSubmit, #s2VoteSubmit {
+     border-radius: 18px;
+
  }
 
  #winnerFormat {
