@@ -165,7 +165,7 @@ $(document).ready(function () {
         }
         // 
     })
-    db.ref("winners").endAt().limitToLast(8).on("child_added", snapshot => {
+    db.ref("winnersYT").endAt().limitToLast(8).on("child_added", snapshot => {
         var newDiv = $("<div>");
         newDiv.append($("<iframe>").attr("src", snapshot.val().video).css("height", "120"));
         newDiv.css({
