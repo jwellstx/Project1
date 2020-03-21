@@ -40,19 +40,27 @@ display: flex;
 }
 button:hover { 
     text-decoration: none; 
-    color: white;
-    background: black;
+    color: black;
+    background: white;
+    border: 3px solid black;
+    padding:3px; 
 }
-input[type=submit]:hover{
+button{
     color: white;
     background: black;
     border: 3px solid white;
     padding:3px;
 }
-input[type=submit]{
+input[type=submit]:hover{
     color: black;
     background: white;
     border: 3px solid black;
+    padding:3px; 
+}
+input[type=submit]{
+    color: white;
+    background: black;
+    border: 3px solid white;
     padding:3px;
 }
 input[type=text]{
